@@ -40,3 +40,12 @@ class OrderConfirmation:
         print(f"Sending order confirmation email to: {customer_email}")
         print("Email body:")
         print(body)
+
+
+class InventoryUpdate:
+    def __init__(self, inventory_database):
+        self.inventory_database = inventory_database
+
+    def update_inventory(self, order_details):
+        for item in order_details.items:
+            self.items.remove(item)
