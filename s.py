@@ -1,4 +1,4 @@
-class Order_detail:
+class OrderDetail:
     def __init__(self, customer_info, items, shipping_address):
         self.customer_info = customer_info
         self.items = items
@@ -19,3 +19,24 @@ class OrderCost:
         return subtotal + tax
     
 
+class OrderValidation:
+    def __init__(self, inventory):
+        self.inventory = inventory
+    
+    def validate_order(self, order_details):
+        for item in order_details.items:
+            if item not in self.inventory:
+                return False
+            
+        return True
+    
+
+class OrderConfirmation:
+    def send_email_confirmation(self, order_details):
+        customer_email = order_details.customer_info["email"]       # gets customer email address
+
+        body = "Dear {customer_info.firstName},\n\nYour order has been successfully processed. Thank you for shopping with us!"
+
+        print(f"Sending order confirmation email to: {customer_email}")
+        print("Email body:")
+        print(body)
